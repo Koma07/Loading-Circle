@@ -3,55 +3,162 @@
 * {
   box-sizing: border-box;
   font-family: "Roboto";
-  --color-1: #4340e7;
+  --color-1: #7a40e7;
   --color-2: #fff;
+  --color-3: #884df5;
+  --color-4: #5900ff;
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
   background-color: #f0f0f0;
+  color: var(--color-2);
 }
 
-.box {
+aside {
   position: relative;
-  top: 10px;
-  left: 10px;
-  width: 100px;
-  height: 30px;
-  outline: 5px solid black;
-  border-radius: 40px;
-  background-color: #4340e7;
-  text-align: center;
-  line-height: 30px;
+  width: 70px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-1);
+  z-index: 1;
+  /* transition: width 1s ease; */
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 50px;
+  padding: 5px;
+  margin-top: 20px;
   cursor: pointer;
-  animation: slide-1 5s ease 1;
 }
 
-@keyframes slide-1 {
-  0% {
-    top: 10px;
-    left: 10px;
-  }
-
-  20% {
-    left: 10px;
-    top: 200px;
-  }
-  40% {
-    top: 200px;
-    left: 10px;
-  }
-  60% {
-    top: 200px;
-    left: 500px;
-  }
-  80% {
-    top: 200px;
-    left: 500px;
-  }
-  100% {
-    top: 10px;
-    left: 500px;
-  }
+.logo > span:last-child {
+  margin-left: 20px !important;
 }
+
+.size {
+  font-size: 2.2rem !important;
+}
+
+ul {
+  width: 65px;
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 69%;
+  height: 50px;
+  margin: 10px;
+  border-radius: 12px;
+}
+
+a > span:first-child {
+  font-size: 2.2rem;
+  margin-right: 20px;
+}
+
+.menu-item > a {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  align-items: center;
+  color: var(--color-2);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.menu-btn {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  color: var(--color-2);
+  background-color: var(--color-4);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity;
+  transition-duration: 0.1s;
+  transition-timing-function: ease;
+}
+
+aside:hover .menu-btn {
+  opacity: 1;
+}
+
+.menu-btn > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  line-height: 100%;
+  font-size: 25px;
+  margin: 0;
+  padding: 0 !important;
+}
+
+/* 
+Menu styles to be added with Javascript
+*/
+
+.active {
+  background-color: var(--color-3);
+}
+
+.menu-text {
+  display: none;
+}
+
+.menu-btn span.material-symbols-outlined {
+  display: none;
+}
+
+.open {
+  display: block !important;
+}
+
+aside.menu-open {
+  width: 300px;
+}
+
+.logo.menu-open {
+  width: 270px;
+}
+ul.menu-open {
+  width: 295px;
+}
+
+.menu-item.menu-open {
+  width: 270px;
+}
+
+.menu-text.menu-open {
+  display: block !important;
+}
+
+/* 
+aside = width: 300px;
+logo =   width: 270px;
+ul = width: 295px;
+menu-item =   width: 270px;
+*/

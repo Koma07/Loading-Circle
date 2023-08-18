@@ -1,14 +1,39 @@
-const bar = document.querySelector(".bar");
-const progressPercentageBox = document.querySelector(".circle-2");
-let loadingBar = 0;
-let progressPercentage = 0;
+// ulWidth = 64px
+// asideWidth = 70px
+const menuBtn = document.querySelector(".menu-btn");
+const aside = document.querySelector("aside");
+const logoBox = document.querySelector(".logo");
+const ul = document.querySelector("ul");
+const menuItems = document.querySelectorAll(".menu-item");
+const menuItemsText = document.querySelectorAll(".menu-text");
+menuBtn.addEventListener("click", openMenu);
 
-let progress = setInterval(() => {
-  progressPercentage++;
-  loadingBar += 3.6;
-  bar.style.background = `conic-gradient(rgb(125, 42, 232) ${loadingBar}deg, rgb(237, 237, 237) 0deg)`;
-  progressPercentageBox.innerHTML = `${progressPercentage % 200}%`;
-  if (loadingBar >= 360) {
-    clearInterval(progress);
-  }
-}, 10);
+function openMenu() {
+  menuBtn.firstElementChild.classList.toggle("open");
+  menuBtn.lastElementChild.classList.toggle("open");
+
+  aside.classList.toggle("menu-open");
+
+  logoBox.classList.toggle("menu-open");
+
+  ul.classList.toggle("menu-open");
+
+  menuItems.forEach((menuItem) => {
+    menuItem.classList.toggle("menu-open");
+  });
+
+  menuItemsText.forEach((menuItemText) => {
+    menuItemText.classList.toggle("menu-open");
+  });
+}
+
+menuItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    menuItems.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+    });
+    item.classList.add("active");
+  });
+});
